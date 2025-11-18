@@ -4,14 +4,14 @@
 - Shift  : D
 
 # Hasil Screenshot
-<img width="300" height="600" alt="localhost_51958_(iPhone 14 Pro Max)" src="https://github.com/user-attachments/assets/135c64d0-4a72-4346-9866-200fce48b94a" />
-<img width="300" height="600" alt="localhost_51958_(iPhone 14 Pro Max) (1)" src="https://github.com/user-attachments/assets/fa54e2e8-d385-4602-8730-6046e96ea3ff" />
-<img width="300" height="600" alt="localhost_51958_(iPhone 14 Pro Max) (2)" src="https://github.com/user-attachments/assets/4344dabb-f25b-42fe-ac67-9e5b83312d68" />
-<img width="300" height="600" alt="localhost_51958_(iPhone 14 Pro Max) (3)" src="https://github.com/user-attachments/assets/b20bca68-f088-4ba5-b139-4d948670a121" />
-<img width="300" height="600" alt="localhost_51958_(iPhone 14 Pro Max) (4)" src="https://github.com/user-attachments/assets/f56eb4af-929e-4f42-a043-d62186bcb274" />
-<img width="300" height="600" alt="localhost_51958_(iPhone 14 Pro Max) (5)" src="https://github.com/user-attachments/assets/db330f57-2c16-44aa-8a4d-868de35902ca" />
-<img width="300" height="600" alt="localhost_51958_(iPhone 14 Pro Max) (6)" src="https://github.com/user-attachments/assets/228e28f0-e7ba-4937-ad75-2c7919c7880f" />
-<img width="300" height="600" alt="localhost_51958_(iPhone 14 Pro Max) (7)" src="https://github.com/user-attachments/assets/c0b88aa4-db31-4daf-ac26-77e22ffb9e07" />
+<img width="200" height="400" alt="localhost_51958_(iPhone 14 Pro Max)" src="https://github.com/user-attachments/assets/135c64d0-4a72-4346-9866-200fce48b94a" />
+<img width="200" height="400" alt="localhost_51958_(iPhone 14 Pro Max) (1)" src="https://github.com/user-attachments/assets/fa54e2e8-d385-4602-8730-6046e96ea3ff" />
+<img width="200" height="400" alt="localhost_51958_(iPhone 14 Pro Max) (2)" src="https://github.com/user-attachments/assets/4344dabb-f25b-42fe-ac67-9e5b83312d68" />
+<img width="200" height="400" alt="localhost_51958_(iPhone 14 Pro Max) (3)" src="https://github.com/user-attachments/assets/b20bca68-f088-4ba5-b139-4d948670a121" />
+<img width="200" height="400" alt="localhost_51958_(iPhone 14 Pro Max) (4)" src="https://github.com/user-attachments/assets/f56eb4af-929e-4f42-a043-d62186bcb274" />
+<img width="200" height="400" alt="localhost_51958_(iPhone 14 Pro Max) (5)" src="https://github.com/user-attachments/assets/db330f57-2c16-44aa-8a4d-868de35902ca" />
+<img width="200" height="400" alt="localhost_51958_(iPhone 14 Pro Max) (6)" src="https://github.com/user-attachments/assets/228e28f0-e7ba-4937-ad75-2c7919c7880f" />
+<img width="200" height="400" alt="localhost_51958_(iPhone 14 Pro Max) (7)" src="https://github.com/user-attachments/assets/c0b88aa4-db31-4daf-ac26-77e22ffb9e07" />
 
 
 # Penjelasn Source Code
