@@ -1,4 +1,4 @@
-# Tugas 6 Praktikum Mobile Pertemuan 8
+# Tugas 7 Praktikum Mobile Pertemuan 9
 - Nama   : Nisa Izzatul Ummah
 - NIM    : H1D023034
 - Shift  : D
@@ -13,23 +13,91 @@
 <img width="200" height="400" alt="localhost_51958_(iPhone 14 Pro Max) (6)" src="https://github.com/user-attachments/assets/228e28f0-e7ba-4937-ad75-2c7919c7880f" />
 <img width="200" height="400" alt="localhost_51958_(iPhone 14 Pro Max) (7)" src="https://github.com/user-attachments/assets/c0b88aa4-db31-4daf-ac26-77e22ffb9e07" />
 
-
 # Penjelasn Source Code
 ## Alur Umum
-Aplikasi ini memiliki dua halaman utama:
-- FormData: Halaman untuk menginput data mahasiswa.
-- TampilData: Halaman untuk menampilkan data yang telah diinput.
+Aplikasi Flutter ini merupakan Sistem dengan arsitektur lengkap yang mencakup:
+- Authentication System (Login/Register)
+- Data Input Form untuk data mahasiswa
+- Data Display dengan perhitungan otomatis
+- Profile Management
+- Navigation System dengan side menu
+- Local Storage menggunakan SharedPreferences.
 
-## 1. Input Data pada Form
-Pada halaman FormData, pengguna mengisi:
-- Nama Lengkap → disimpan pada _namaController.text
-- NIM → disimpan pada _nimController.text
-- Tahun Lahir → disimpan pada _selectedTahun
-Semua input dikontrol menggunakan TextEditingController dan komponen DropdownButtonFormField untuk tahun lahir.
+## 1. Autentikasi dan Inisialisasi
+#### main.dart - Entry Point Aplikasi
 
-## 2. Mengirim Data ke Halaman Tampil
-Ketika tombol “TAMPILKAN DATA” ditekan, proses validasi dijalankan.
-Jika data valid, maka dilakukan navigasi ke halaman TampilData menggunakan Navigator.push() berikut:
+<pre> void main() {
+  runApp(const MyApp());
+} </pre>
+
+File ini merupakan titik awal aplikasi yang menginisialisasi MaterialApp dengan konfigurasi:
+- initialRoute: '/' → LoginPage sebagai halaman pertama
+- routes: AppRoutes.routes → Mendefinisikan semua navigasi
+- theme → Menggunakan warna biru dengan font Poppins
+  
+#### Login System (login_page.dart)
+Proses autentikasi menggunakan kredensial default:
+- Username: admin
+- Password: admin
+
+Flow Login:
+- User input username & password
+- Validasi form (field tidak boleh kosong)
+- Simulasi proses dengan delay 1.5 detik
+- Cek credentials → jika valid simpan ke SharedPreferences
+- Navigasi ke HomePage jika sukses
+
+#### Registration System (register_page.dart)
+Form pendaftaran dengan validasi komprehensif:
+- 5 field required: Nama, Email, NIM, Password, Konfirmasi Password
+- Validasi: password minimal 6 karakter, konfirmasi harus sama
+- Auto-login setelah registrasi berhasil
+
+Flow Login:
+- User input username & password
+- Validasi form (field tidak boleh kosong)
+- Simulasi proses dengan delay 1.5 detik
+- Cek credentials → jika valid simpan ke SharedPreferences
+- Navigasi ke HomePage jika sukses
+
+## 2. Dashboard dan Navigasi
+#### Home Page (home_page.dart)
+Dashboard utama setelah login berisi:
+- Welcome Section: Menampilkan data user dari SharedPreferences
+- Features Grid: 3 card navigasi (Form Data, Profile, About)
+- Side Menu: Navigasi drawer dengan data user dinamis
+
+#### Navigation System (routes.dart & sidebarmenu.dart)
+Routes Terdefinisi::
+
+<pre> {
+  '/': LoginPage(),
+  '/home': HomePage(),
+  '/about': AboutPage(),
+  '/register': RegisterPage(),
+  '/form': FormData(),
+  '/profile': ProfilePage(),
+} </pre>
+
+Side Menu Features:
+- Header dengan data user real-time dari SharedPreferences
+- Menu items dengan navigasi menggunakan Navigator.pushNamed()
+- Logout functionality dengan confirmation dialog
+
+## 3. Data Management System
+#### Form Input Data (form_data.dart)
+Form untuk input data mahasiswa dengan 3 field:
+- Nama Lengkap → Required field
+- NIM → Required + minimal 8 karakter
+- Tahun Lahir → Dropdown 30 tahun terakhir (required)
+  
+Teknikal Implementation:
+- GlobalKey<FormState> untuk form validation
+- TextEditingController untuk manage input text
+- DropdownButtonFormField untuk pilihan tahun
+- Validasi di-trigger pada tombol submit
+
+Data Passing ke TampilData
 
 <pre> Navigator.of(context).push(
   MaterialPageRoute(
@@ -41,35 +109,75 @@ Jika data valid, maka dilakukan navigasi ke halaman TampilData menggunakan Navig
   ),
 ); </pre>
 
-Pada baris ini, data dikirim dari form menuju halaman tampilan melalui parameter konstruktor (nama, nim, tahunLahir).
+Data dikirim via constructor parameters saat navigasi.
 
-## 3. Menerima dan Menampilkan Data
-Halaman TampilData menerima data tersebut melalui konstruktor:
+## 4. Data Processing dan Display
+#### TampilData (tampil_data.dart)
+Menerima dan memproses data dari form, data yang ditampilkan adalah:
+- Nama Lengkap (dari parameter)
+- NIM (dari parameter)
+- Tahun Lahir (dari parameter)
+- Umur (dihitung otomatis)
+  
+Automatic Age Calculation:
 
-<pre> class TampilData extends StatelessWidget {
-  final String nama;
-  final String nim;
-  final int tahunLahir;
+<pre> Automatic Age Calculation: </pre>
 
-  const TampilData({
-    required this.nama,
-    required this.nim,
-    required this.tahunLahir,
-  });
-} </pre>
+UI Components:
+- Success header dengan icon check
+- Data cards terorganisir
+- Status verification message
+- Tombol kembali ke form
 
-Data kemudian digunakan untuk ditampilkan kembali ke pengguna dan menghitung umur menggunakan:
-
-<pre> int get umur => DateTime.now().year - tahunLahir; </pre>
-
-## 4. Kembali ke Halaman Form
-Saat tombol “KEMBALI KE FORM” ditekan, halaman TampilData ditutup menggunakan:
+Navigation Kembali:
 
 <pre> Navigator.of(context).pop(); </pre>
 
-Sehingga pengguna kembali ke halaman input form tanpa kehilangan data sebelumnya.
+Menutup halaman TampilData dan kembali ke FormData.
+
+## 5. Profile dan About Sections
+#### Profile Page (profile_page.dart)
+Menampilkan data user dari SharedPreferences:
+- Load data di initState() menggunakan _loadUserData()
+- Tampilkan dalam format ListTile dengan icons
+- Logout functionality dengan confirmation dialog
+
+#### About Page (about_page.dart)
+Informasi fitur aplikasi dalam format card::
+- Authentication system
+- Navigation features
+- Data form capabilities
+- Responsive design principles
+
+## 6. Data Persistence System
+#### SharedPreferences Implementation
+Digunakan untuk menyimpan::
+- isLoggedIn → status login user
+- username → nama user
+- email → email user
+- nim → NIM user
+
+Data Flow:
+- Login/Register → simpan data ke SharedPreferences
+- Home/Profile → load data dari SharedPreferences
+- Logout → hapus data dari SharedPreferences
 
 ## Kesimpulan
-Proses passing data dilakukan menggunakan:
-- Navigator.push() untuk berpindah halaman sekaligus mengirim data.
-- Konstruktor class untuk menerima data di halaman tujuan.
+Aplikasi ini mengimplementasikan:
+1. State Management:
+   - Local state dengan setState()
+   - Data persistence dengan SharedPreferences
+     Form state dengan GlobalKey<FormState>
+2. Navigation Pattern:
+   - Route-based navigation dengan Navigator
+   - Parameter passing via constructors
+   - Stack management dengan push/pop
+3. Data Flow:
+   - Input → Validation → Processing → Display
+   - Local storage untuk user session
+   - Real-time data updates
+4. UI/UX Principles:
+   - Consistent design language
+   - Responsive layouts
+   - User feedback mechanisms
+   - Loading states and error handling
